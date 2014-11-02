@@ -1,6 +1,8 @@
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -15,10 +17,11 @@ public class Ventana implements ActionListener {
 	JMenuBar barra;
 	JMenu archivo;
 	JMenuItem salir, reservacion, precios;
+	JButton vpUno;
 	boolean precio =false;
-	//JInternalFrame vPrecios = new JInternalFrame("ventana de precios");
 	JPanel v2p = new JPanel();
-	Panel principal = new Panel();
+	Paneles.PanelPrincipal principal = new Paneles.PanelPrincipal();
+	
 	public Ventana(){
 		ventana.getContentPane().add(escritorio);
 		ventana.setResizable(false); 
@@ -65,13 +68,18 @@ public class Ventana implements ActionListener {
 			System.exit(0);
 		}
 		if (e.getSource() == precios){
+			//VENTANA INTERNA DE PRECIOS
 			if (precio == false){
-				JInternalFrame vPrecios = new JInternalFrame("ventana de precios");			
-				vPrecios.add(v2p);
-				vPrecios.pack();
-				vPrecios.setResizable(true);
-				vPrecios.setClosable(true);
-				vPrecios.setMaximizable(true);
+				//JInternalFrame vPrecios = new JInternalFrame("ventana de precios");			
+				VentanasInternas.VentanaPrecios vPrecios = new VentanasInternas.VentanaPrecios();
+				//vPrecios.setLayout(null);
+				//vPrecios.setName("ventana precios");
+				//vPrecios.setBounds(0, 0, 500, 500);
+				//vPrecios.add(v2p);
+				//vPrecios.pack();
+				//vpUno = new JButton("uno");
+				//vpUno.setBounds(0, 0, 100, 50);
+				//vPrecios.add(vpUno);
 				escritorio.add(vPrecios);
 				vPrecios.setVisible(true);
 				precio = true;
