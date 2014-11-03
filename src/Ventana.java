@@ -1,11 +1,8 @@
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -17,7 +14,6 @@ public class Ventana implements ActionListener {
 	JMenuBar barra;
 	JMenu archivo;
 	JMenuItem salir, reservacion, precios;
-	JButton vpUno;
 	boolean precio =false;
 	JPanel v2p = new JPanel();
 	Paneles.PanelPrincipal principal = new Paneles.PanelPrincipal();
@@ -49,15 +45,7 @@ public class Ventana implements ActionListener {
 				
 				salir = new JMenuItem("Salir");
 				salir.addActionListener(this);
-				archivo.add(salir);
-		//VENTANA INTERNA DE PRECIOS
-				//vPrecios.add(v2p);
-				//vPrecios.pack();
-				//vPrecios.setResizable(true);
-				//vPrecios.setClosable(true);
-				//vPrecios.setMaximizable(true);
-				//escritorio.add(vPrecios);
-				//vPrecios.setVisible(false);		
+				archivo.add(salir);	
 	}
 	
 	
@@ -70,17 +58,10 @@ public class Ventana implements ActionListener {
 		if (e.getSource() == precios){
 			//VENTANA INTERNA DE PRECIOS
 			if (precio == false){
-				//JInternalFrame vPrecios = new JInternalFrame("ventana de precios");			
 				VentanasInternas.VentanaPrecios vPrecios = new VentanasInternas.VentanaPrecios();
-				//vPrecios.setLayout(null);
-				//vPrecios.setName("ventana precios");
-				//vPrecios.setBounds(0, 0, 500, 500);
-				//vPrecios.add(v2p);
-				//vPrecios.pack();
-				//vpUno = new JButton("uno");
-				//vpUno.setBounds(0, 0, 100, 50);
-				//vPrecios.add(vpUno);
-				escritorio.add(vPrecios);
+				//Paneles.PanelPrecio pPre = new Paneles.PanelPrecio();
+				//vPrecios.add(pPre); //AGREGAMOS PANEL CON IMAGEN AL FRAME INTERNO
+				escritorio.add(vPrecios); //AGREGAMOS EL FRAME INTERNO AL ESCRITORIO
 				vPrecios.setVisible(true);
 				precio = true;
 			}else{
@@ -88,6 +69,12 @@ public class Ventana implements ActionListener {
 			}
 			
 			
+		}
+		
+		if(e.getSource() == reservacion){
+			VentanasInternas.VentanaReservacion vReserva = new VentanasInternas.VentanaReservacion();
+			escritorio.add(vReserva);
+			vReserva.setVisible(true);
 		}
 	}
 
